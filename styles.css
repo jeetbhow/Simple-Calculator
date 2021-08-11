@@ -1,0 +1,16 @@
+#button-grid {
+    display: grid; 
+    grid-template-columns: 50px 50px 50px 50px; 
+    grid-column-gap: 3px; 
+    grid-row-gap: 3px; 
+}
+
+.two-width {
+    grid-column: 3/5;
+}
+
+input[type='text'] {
+    width: 201px;
+    margin: 0px 0px 3px 0px; 
+    text-align: right;
+}
