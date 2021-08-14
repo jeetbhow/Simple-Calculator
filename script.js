@@ -1,43 +1,50 @@
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector("input");
 
-const Button = {
+display.addEventListener("input", checkInput); 
+
+const SpecialButton = {
     DEL: "DEL",
     EQUAL: "=",
     CLEAR: "CE",
     SIGN: "+/-",
 }
 
-display.addEventListener("input", checkInput); 
+// The stack is used to perform the actual calculations. 
+let stack = [];
 
+let hasFinishedCalculation = false; 
+
+// Adds event listeners to all of the buttons. 
 for (const button of buttons) {
-    
     switch (button.textContent) {
-        case Button.EQUAL:
+        case SpecialButton.EQUAL:
             button.addEventListener("click", evaluate);
             break; 
-        case Button.DEL:
+        case SpecialButton.DEL:
             button.addEventListener("click", del);
             break; 
-        case Button.CLEAR:
+        case SpecialButton.CLEAR:
             button.addEventListener("click", clear);
             break; 
         default:
             button.addEventListener("click", () => append(button.textContent));
     }
-
 }
 
 function checkInput() {
-    // No direct input support as of now. 
     del(); 
 }
 
-function append(number) {
-    display.value += number; 
+function append(text) {
+    display.value += text;
 }
 
 function evaluate() {
+    display.value = display.value.replace(Operator.MULTIPLY, "*");
+    display.value = display.value.replace(Operator.DIVIDE, "/");
+    display.value = display.value.replace(Operator.ADD, "+");
+    display.value = display.value.replace(Operator.SUBTRACT, "-");
     display.value = eval(display.value);
 }
 
@@ -48,3 +55,4 @@ function del() {
 function clear() {
     display.value = '';
 }
+
