@@ -3,13 +3,14 @@ const display = document.querySelector("input");
 display.addEventListener("input", checkInput); 
 
 let hasFinishedCalculation = false; 
+let isInvalidInput = false; 
 
 function checkInput() {
     del(); 
 }
 
 function append(char) {
-    display.value += char; 
+    if (!isInvalidInput) display.value += char; 
 }
 
 function evaluate() {
@@ -18,6 +19,7 @@ function evaluate() {
         display.value = "Invalid Input";
         display.style.backgroundColor = "red";
         display.style.color = "white";
+        isInvalidInput = true; 
     }
 
     display.value = display.value.replace(Operator.MULTIPLY, "*");
@@ -33,17 +35,22 @@ function evaluate() {
         display.value = "Invalid Input";
         display.style.backgroundColor = "red";
         display.style.color = "white";
+        isInvalidInput = true; 
+        
     }
 
 }
 
 function del() { 
-    display.value = display.value.substring(0, display.value.length - 1);
+    if (!isInvalidInput) 
+        display.value = display.value.substring(0, display.value.length - 1);
 }
 
 function clear() {
+    if (isInvalidInput) isInvalidInput = false;
     display.style.backgroundColor = "#2c8f2c";
     display.style.color = "#91f2b2";
     display.value = '';
+
 }
 
