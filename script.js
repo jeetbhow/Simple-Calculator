@@ -66,13 +66,16 @@ function append(char) {
 
 function evaluate() {
     replace();
-    display.value = Number(display.value); 
 
-    if (isNaN(display.value)) {
-        displayInvalidInputError()
-        currentState = State.INVALID_INPUT;
-    } else {
-        display.value = eval(display.value);
+    try {
+        display.value = eval(display.value); 
+        if (display.value === 'undefined') {
+            displayInvalidInputError(); 
+            currentState = State.INVALID_INPUT;
+        }
+    } catch {
+        displayInvalidInputError(); 
+        currentState = State.INVALID_INPUT; 
     }
 }
 
