@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+body {
+    background-color: #1e3b28; 
+}
+
+h1 {
+    color: white; 
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px; 
+    position: relative; 
+    left: 50px; 
+}
+
+.centered {
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+#calculator {
+    display: grid; 
+    grid-template-columns: 60px 60px 60px 60px; 
+    grid-template-rows: 60px 60px 60px 60px 60px 60px; 
+    grid-gap: 5px; 
+}
+
+#background {
+    background-color: #E3D6CE;
+    border-radius: 20px; 
+    height: 470px;
+    width: 360px; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.two-width {
+    grid-column: 3/5;
+}
+
+button  {
+    font-family: 'Oswald', sans-serif;
+    border: none; 
+    border-radius: 15px; 
+    background-color: #4a453a;
+    color: white; 
+    box-shadow: 10px 5px 5px gray;
+}
+
+button:hover {
+    background-color: gray;  
+}
+
+input {
+    grid-column: 1/5; 
+    font-family: 'Oswald', sans-serif;
+    background-color: #2c8f2c;
+    color: #91f2b2; 
+    border: 1px solid white;
+    border-radius: 15px;   
+    font-size: 24px;  
+    text-align: right;  
+    position: relative; 
+    bottom: 20px; 
+    box-shadow: 0px 0px 3px 2px gray;
+}
+
+.fade-in-and-out {
+    animation-name: fade-in-and-out; 
+    animation-duration: 4s; 
+    animation-iteration-count: infinite;
+}
+
+.hide {
+    display: none; 
+}
+
+@keyframes fade-in-and-out {
+    0% {
+        opacity: 0; 
+    }
+    50% {
+        opacity: 1; 
+    }
+    100% {
+        opacity: 0; 
+    }
+}
+
+#invalid-input-message {
+    font-size: 25px; 
+    color: white; 
+    font-family: 'Oswald', sans-serif;
+    position: absolute; 
+    top: 80%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
