@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src='OperatorMap.js' defer></script>
     <script src='script.js' defer></script>
     <link href='styles.css' rel='stylesheet'>
   </head>
@@ -10,14 +9,14 @@
     <div id='background'></div>
     <div id='calculator' class='centered'>
       <input type='text'>
-      <button>CE</button>
+      <button>C</button>
       <button>DEL</button>
-      <button>+/-</button>
-      <button>&#247</button>
+      <button>(</button>
+      <button>)</button>
       <button>1</button>
       <button>2</button>
       <button>3</button>
-      <button>&#215</button>
+      <button>&#247</button>
       <button>4</button>
       <button>5</button>
       <button>6</button>
@@ -25,10 +24,13 @@
       <button>7</button>
       <button>8</button>
       <button>9</button>
-      <button>&#8722</button>
+      <button>&#215</button>
       <button>0</button>
       <button>.</button>
-      <button class='two-width'>=</button>
+      <button>=</button>
+      <button>&#8722</button>
     </div>
+
+    <p id='invalid-input-message' class='hide'>Press the <b>C</b> button to reset the calculator.</p>
     </body>
 </html>
