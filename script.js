@@ -25,13 +25,15 @@ const symbolMap = new Map();
 symbolMap.set(Symbol.CROSS, "*");         
 symbolMap.set(Symbol.DIVISION, "/");         
 symbolMap.set(Symbol.PLUS, "+");        
-symbolMap.set(Symbol.SUBTRACTION, "-");     
+symbolMap.set(Symbol.SUBTRACTION, "-");    
 
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector("input");
 const invalidInputField = document.querySelector("#invalid-input-message");
 
-let currentState = State.ACTIVE; 
+let currentState = State.ACTIVE;
+let hasFinishedCalculation = false;  
+
 
 display.addEventListener("input", processKeyboardInput); 
 
@@ -57,6 +59,14 @@ function processKeyboardInput() {
 }
 
 function append(char) {
+
+    if (hasFinishedCalculation) {
+        if (char <= 9 && char >= 0) {
+            display.value = "";
+        }
+        hasFinishedCalculation = false;
+    }
+
     if (currentState === State.ACTIVE) {
         display.value += char;
     } else {
@@ -77,6 +87,8 @@ function evaluate() {
         displayInvalidInputError(); 
         currentState = State.INVALID_INPUT; 
     }
+
+    hasFinishedCalculation = true; 
 }
 
 function replace() {
